@@ -12,7 +12,7 @@ public class Pellet : MonoBehaviour
         if(collision.gameObject.name == "Pacman")
         {
             gm.scoreCount = gm.scoreCount + scoreValue;
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 }

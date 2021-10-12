@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{DEEFD7DA-86C2-78F1-685C-DD03EB2925A1}</ProjectGuid>
+    <ProjectGuid>{8B4CE7DE-85C7-36F6-8FEF-8E11D6AA72D5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -53,10 +53,11 @@
     <UnityVersion>2020.3.18f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Pacman.cs" />
     <Compile Include="Assets\Scripts\NavMesh.cs" />
     <Compile Include="Assets\Scripts\Pellet.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Ghost.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

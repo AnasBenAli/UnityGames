@@ -6,8 +6,14 @@ public class Pacman : MonoBehaviour
 {
     private Rigidbody rb;
     public float speedFactor=1;
+    public Vector3 intiPos;
     public GameManager gm;
-    
+
+    private void Awake()
+    {
+        intiPos = this.transform.position;
+        Debug.Log(intiPos);
+    }
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -30,11 +36,16 @@ public class Pacman : MonoBehaviour
             this.GetComponent<Rigidbody>().isKinematic = true;
         }
     }
+
+    [System.Obsolete]
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.layer == 7)
         {
             this.gameObject.SetActive(false);
+            gm.ResetAllPos();
+            gm.ResetScore();
         }
     }
+    
 }

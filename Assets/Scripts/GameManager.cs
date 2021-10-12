@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,15 +7,20 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public Transform pallets;
-    public GameObject pacman;
+    public Transform pellets;
+    public Pacman pacman;
     public Text Score;
     public Transform Ghosts;
+    public Ghost[] GS;
+    
     public Button pause;
-    public bool isPaused {get;set;}
+    public bool isPaused { get; set; }
     public int scoreCount { get; set; }
+
+    [Obsolete]
     void Start()
     {
+        FreezeGhosts();
         scoreCount = 0;
         isPaused = true;
 
@@ -24,38 +30,38 @@ public class GameManager : MonoBehaviour
             {
                 isPaused = false;
                 pause.GetComponentInChildren<Text>(true).text = "Pause";
+                UnfreezeGhosts();
             }
             else
             {
                 isPaused = true;
                 pause.GetComponentInChildren<Text>(true).text = "Play";
+                FreezeGhosts();
             }
         });
+
     }
-        
-        
-    
+
+
+
     [System.Obsolete]
     void Update()
     {
-        
+
         if (!isPaused)
         {
             Score.text = "Score: " + scoreCount.ToString();
-            if (pallets.childCount == 0)
+            if (!hasRemainingPellets())
             {
-                pacman.SetActive(false);
-                FreezeGhosts();
+                ResetAllPos();
             }
-            UnfreezeGhosts();
-
         }
         else
         {
-            FreezeGhosts();
+
         }
-        
     }
+
 
     [System.Obsolete]
     private void FreezeGhosts()
@@ -76,5 +82,49 @@ public class GameManager : MonoBehaviour
             ghost.GetComponent<NavMeshAgent>().enabled = true;
         }
     }
+    public void reset()
+    {
+        this.pacman.transform.position = this.pacman.intiPos;
+        this.pacman.gameObject.SetActive(true);
+    }
+    bool hasRemainingPellets()
+    {
+        for (int i = 0; i < pellets.childCount; i++)
+        {
+            if (pellets.GetChild(i).gameObject.activeSelf)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    void resetPellets()
+    {
+        for (int i = 0; i < pellets.childCount; i++)
+        {
+            pellets.GetChild(i).gameObject.SetActive(true);
+        }
+    }
+    void resetGhosts()
+    {
+        for (int i = 0; i < GS.Length; i++)
+        {
+            GS[i].gameObject.transform.position = GS[i].initPos;
+        }
+    }
 
+    [Obsolete]
+    public void ResetAllPos()
+    {
+        FreezeGhosts();
+        this.pacman.gameObject.SetActive(false);
+        Invoke(nameof(resetGhosts), 2.0f);
+        Invoke(nameof(reset), 2.0f);
+        Invoke(nameof(UnfreezeGhosts), 2.0f);
+        resetPellets();
+    }
+    public void ResetScore()
+    {
+        scoreCount = 0;
+    }
 }
