@@ -47,7 +47,6 @@ public class GameManager : MonoBehaviour
     [System.Obsolete]
     void Update()
     {
-
         if (!isPaused)
         {
             Score.text = "Score: " + scoreCount.ToString();
