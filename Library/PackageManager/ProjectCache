@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637695704222219244
-    m_Hash: 3296676276
+      ticks: 637696622606912553
+    m_Hash: 4223750472
   m_LockFileStatus:
     m_FilePath: C:/Users/ASUS TUF I5/Documents/GitHub/UnityGames/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637695704222269056
-    m_Hash: 2138823985
+      ticks: 637696622606912553
+    m_Hash: 1866808722
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
